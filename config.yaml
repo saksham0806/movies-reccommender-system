@@ -1,0 +1,52 @@
+# GUARD Recommendation System Configuration
+
+# --- Data Paths ---
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  movielens_url: "https://files.grouplens.org/datasets/movielens/ml-1m.zip"
+
+# --- Preprocessing ---
+preprocessing:
+  noise_rate: 0.10          # Fraction of labels to flip (false-positive noise)
+  sparsity_level: 0.10      # Fraction of interactions to drop
+  positive_threshold: 4     # Ratings >= this become positive (1)
+  train_ratio: 0.80
+  val_ratio: 0.10
+  test_ratio: 0.10
+  random_seed: 42
+
+# --- Model Hyperparameters ---
+model:
+  embedding_dim: 64
+  num_attention_heads: 4
+  ffn_dim: 128
+  dropout: 0.2
+  mask_threshold: 0.5       # Adaptive binary mask sigmoid threshold
+
+# --- Training ---
+training:
+  epochs: 50
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 5               # Early stopping patience
+  checkpoint_dir: "models"
+
+# --- Conformal Risk Control ---
+crc:
+  risk_threshold: 0.05      # tau - safety threshold
+  risky_genres:
+    - "Horror"
+    - "Crime"
+    - "Thriller"
+  safe_genres:
+    - "Animation"
+    - "Comedy"
+    - "Children's"
+  kde_bandwidth: 0.5
+
+# --- Evaluation ---
+evaluation:
+  top_k: 10
+  output_file: "benchmarks"  # Will produce .csv and .json
