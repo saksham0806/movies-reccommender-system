@@ -111,7 +111,7 @@ class ConformalRiskControl:
             return 0.0
 
         # KDE probability density (may be > 1 for high-dimensional densities)
-        density = float(self.kde.evaluate(vec.reshape(-1, 1)))
+        density = float(self.kde.evaluate(vec.reshape(-1, 1))[0])
         # Normalise via sigmoid-like mapping to [0, 1]
         risk = 1.0 / (1.0 + np.exp(-density))
         return risk

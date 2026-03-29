@@ -1,0 +1,8 @@
+[INFO] MovieLens 1M already exists at data/raw/ml-1m, skipping download.
+[INFO] Loading ratings …
+[INFO] Loaded 1000209 ratings, 3883 movies.
+[INFO] After sparsity simulation: 900188 interactions.
+[INFO] Injected noise: flipped 90018 labels (10.0%).
+[INFO] Split sizes — train: 720150, val: 90019, test: 90019
+[INFO] Saved processed data to data/processed/
+[DONE] Preprocessing complete.

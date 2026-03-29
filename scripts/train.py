@@ -155,10 +155,12 @@ def train_guard(cfg, epochs_override=None, batch_size_override=None, lr_override
                                    weight_decay=cfg["training"]["weight_decay"])
 
     # Datasets
-    train_mapped = train_df.rename(columns={"user_id_mapped": "user_id",
-                                             "item_id_mapped": "item_id"})[["user_id", "item_id", "label"]]
-    val_mapped = val_df.rename(columns={"user_id_mapped": "user_id",
-                                         "item_id_mapped": "item_id"})[["user_id", "item_id", "label"]]
+    train_mapped = train_df[["user_id_mapped", "item_id_mapped", "label"]].rename(
+        columns={"user_id_mapped": "user_id", "item_id_mapped": "item_id"}
+    )
+    val_mapped = val_df[["user_id_mapped", "item_id_mapped", "label"]].rename(
+        columns={"user_id_mapped": "user_id", "item_id_mapped": "item_id"}
+    )
     train_loader = DataLoader(InteractionDataset(train_mapped),
                               batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(InteractionDataset(val_mapped),

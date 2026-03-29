@@ -1,0 +1,26 @@
+[
+  {
+    "model": "CF",
+    "MSE": 0.5615,
+    "F1": 0.0511,
+    "CTR": 0.0229,
+    "Violation_Rate_%": 38.1415,
+    "Latency_ms": 8.5
+  },
+  {
+    "model": "CBF",
+    "MSE": 0.572,
+    "F1": 0.0197,
+    "CTR": 0.0087,
+    "Violation_Rate_%": 34.2867,
+    "Latency_ms": 13.62
+  },
+  {
+    "model": "GUARD+CRC",
+    "MSE": 0.5735,
+    "F1": 0.0118,
+    "CTR": 0.0052,
+    "Violation_Rate_%": 0.0,
+    "Latency_ms": 5.83
+  }
+]
